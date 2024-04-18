@@ -1,6 +1,5 @@
 package service;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,7 +14,7 @@ public class HandleMenu {
 
 	// Construtor vazio
 	public HandleMenu() {
-		// Toda vez que a classe menu, for insciada, o nosso arquivo sera verificado
+		// Toda vez que a classe menu, for instanciada, o nosso arquivo sera verificado
 		gs.verificaECria("usuarios.txt");
 	}
 

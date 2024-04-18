@@ -79,19 +79,6 @@ public class GerenciadorDeUsuarios {
 		return usuarios;
 	}
 
-	public void deletarUsuario(int id) {
-		List<Usuario> usuarios = lerUsuarios();
-
-		// removeIf => é um loop, um forEach simplificado
-		// o usuario ele vai de linha em linha até ser igual ao que o usuario digi
-		if (usuarios.removeIf(usuario -> usuario.getId() == id)) {
-			reescreverArquivo(usuarios);
-			System.out.println("Usuario deletado com sucesso.");
-		} else {
-			System.out.println("Usuario não encontrado.");
-		}
-	}
-
 	public void reescreverArquivo(List<Usuario> usuarios) {
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(NOME_ARQUIVO))) {
 			for (Usuario usuario : usuarios) {
@@ -100,22 +87,6 @@ public class GerenciadorDeUsuarios {
 			}
 		} catch (IOException e) {
 			System.out.println("Ocorreu um erro ao reescrever o arquivo: " + e.getMessage());
-		}
-
-	}
-
-	public void listarUsuario() {
-		List<Usuario> usuarios = lerUsuarios();
-
-		if (usuarios.isEmpty()) {
-			System.out.println("Nenhum usuario cadastrado.");
-		} else {
-			System.out.println("Lista de usuarios.");
-			for (Usuario usuario : usuarios) {
-				System.out.println(
-						"ID: " + usuario.getId() + ", Nome: " + usuario.getNome() + ", Senha: " + usuario.getSenha());
-			}
-
 		}
 
 	}
@@ -143,6 +114,22 @@ public class GerenciadorDeUsuarios {
 
 	}
 
+	public void listarUsuario() {
+		List<Usuario> usuarios = lerUsuarios();
+
+		if (usuarios.isEmpty()) {
+			System.out.println("Nenhum usuario cadastrado.");
+		} else {
+			System.out.println("Lista de usuarios.");
+			for (Usuario usuario : usuarios) {
+				System.out.println(
+						"ID: " + usuario.getId() + ", Nome: " + usuario.getNome() + ", Senha: " + usuario.getSenha());
+			}
+
+		}
+
+	}
+
 	public void listarEspecifico(int id) {
 
 		List<Usuario> usuarios = lerUsuarios();
@@ -156,6 +143,19 @@ public class GerenciadorDeUsuarios {
 			} else {
 				System.out.println("Usuario não encontrado.");
 			}
+		}
+	}
+
+	public void deletarUsuario(int id) {
+		List<Usuario> usuarios = lerUsuarios();
+
+		// removeIf => é um loop, um forEach simplificado
+		// o usuario ele vai de linha em linha até ser igual ao que o usuario digi
+		if (usuarios.removeIf(usuario -> usuario.getId() == id)) {
+			reescreverArquivo(usuarios);
+			System.out.println("Usuario deletado com sucesso.");
+		} else {
+			System.out.println("Usuario não encontrado.");
 		}
 	}
 
