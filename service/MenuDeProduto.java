@@ -34,10 +34,10 @@ public class MenuDeProduto {
 	}
 
 	public void cadastrar() {
-		System.out.println("Digite o nome: ");
+		System.out.println("Digite o nome do produto: ");
 		String nome = sc.next();
 
-		System.out.println("Digite o preco: ");
+		System.out.println("Digite o preço: ");
 		double preco = sc.nextDouble();
 
 		System.out.println("Digite a quantidade: ");
@@ -50,7 +50,7 @@ public class MenuDeProduto {
 	}
 
 	public void ler() {
-		gp.readerProduct();
+		gp.listarProduto();
 	}
 
 	public void atualizar() {
@@ -60,10 +60,10 @@ public class MenuDeProduto {
 		System.out.println("Digite o novo nome: ");
 		String nome = sc.next();
 		
-		System.out.println("Digite a nova senha: ");
+		System.out.println("Digite um novo preço: ");
 		double preco = sc.nextDouble();
 		
-		System.out.println("Digite a nova senha: ");
+		System.out.println("Digite a nova quantidade: ");
 		int quantidade = sc.nextInt();
 		
 		gp.updateProduct(id, nome, preco, quantidade);
@@ -75,4 +75,12 @@ public class MenuDeProduto {
 		gp.deletProducts(id);
 	}
 
+	public void listarEspecifico() {
+		System.out.println("Digite o ID do usuario a ser encontrado: ");
+		int id = sc.nextInt();
+		gp.listarEspecifico(id);
+
+	}
+	
+	
 }

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import service.HandleMenu;
 
-public class Sistema {
+public class SistemaUsuario {
 
 	public static void main(String[] args) {
 
@@ -14,8 +14,8 @@ public class Sistema {
 
 		do {
 			// \n => pula linha
-			System.out.print("1 - Criar \n2 - Editar \n3 - Deletar " 
-			+ "\n4 - Listar \n5 - Lista Especifico \n6 - Logar na conta \n9 - Sair\n");
+			System.out.print("1 - Criar \n2 - Editar \n3 - Deletar "
+					+ "\n4 - Listar \n5 - Lista Especifico \n6 - Logar na conta \n7 - Voltar para Menu Principal \n9 - Sair\n");
 			opcao = sc.nextInt();
 
 			switch (opcao) {
@@ -39,10 +39,16 @@ public class Sistema {
 				hm.listarEspecifico();
 				break;
 			}
-			case 6:{
+			case 6: {
 				hm.login();
 			}
+			case 7: {
+				Main.main(args);
+			}
 			case 9: {
+				System.out.println("Você saiu do sistema");
+				System.out.println("Obrigado, volte sempre.");
+				System.exit(0);
 				break;
 			}
 			default:

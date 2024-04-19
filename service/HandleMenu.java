@@ -18,51 +18,6 @@ public class HandleMenu {
 		gs.verificaECria("usuarios.txt");
 	}
 
-	public void criar() {
-		System.out.println("Digite o nome: ");
-		String nome = sc.next();
-
-		System.out.println("Digite a senha: ");
-		String senha = sc.next();
-
-		int id = getNextId();
-
-		Usuario u = new Usuario(id, nome, senha);
-		gs.adicionarUsuario(u);
-	}
-
-	public void editar() {
-		System.out.println("Digite o ID do usuario: ");
-		int id = sc.nextInt();
-		
-		System.out.println("Digite o novo nome: ");
-		String nome = sc.next();
-		System.out.println("Digite a nova senha: ");
-		String senha = sc.next();
-		
-		gs.editarUsuario(id, nome, senha);
-		
-	}
-
-	public void deletar() {
-		System.out.println("Digite o ID do usuario a ser deletado: ");
-		int id = sc.nextInt();
-		gs.deletarUsuario(id);
-
-	}
-
-	public void listar() {
-
-		gs.listarUsuario();
-	}
-
-	public void listarEspecifico() {
-		System.out.println("Digite o ID do usuario a ser encontrado: ");
-		int id = sc.nextInt();
-		gs.listarEspecifico(id);
-		
-	}
-	
 	private int getNextId() {
 		List<Usuario> usuarios = gs.lerUsuarios();
 		int maxId = 0;
@@ -80,14 +35,64 @@ public class HandleMenu {
 		return maxId + 1;
 	}
 
-	
+	public void criar() {
+		System.out.println("Digite o nome: ");
+		String nome = sc.next();
+
+		System.out.println("Digite a senha: ");
+		String senha = sc.next();
+
+		int id = getNextId();
+
+		Usuario u = new Usuario(id, nome, senha);
+		gs.adicionarUsuario(u);
+	}
+
+	public void listar() {
+		gs.listarUsuario();
+	}
+
+	public void editar() {
+		System.out.println("Digite o ID do usuario: ");
+		int id = sc.nextInt();
+
+		System.out.println("Digite o novo nome: ");
+		String nome = sc.next();
+		System.out.println("Digite a nova senha: ");
+		String senha = sc.next();
+
+		gs.editarUsuario(id, nome, senha);
+
+	}
+
+	public void deletar() {
+		System.out.println("Digite o ID do usuario a ser deletado: ");
+		int id = sc.nextInt();
+		gs.deletarUsuario(id);
+
+	}
+
+	public void listarEspecifico() {
+		System.out.println("Digite o ID do usuario a ser encontrado: ");
+		int id = sc.nextInt();
+		gs.listarEspecifico(id);
+
+	}
+
 	public void login() {
 		System.out.println("Login");
 		System.out.println("Digite o login: ");
 		String login = sc.next();
 		System.out.println("Digite a senha: ");
 		String senha = sc.next();
-		
+
 		gs.logar(login, senha);
 	}
+
+	public void menuPrincipal() {
+		System.out.println();
+		System.out.println("Voltar para o Menu Principal.");
+
+	}
+
 }

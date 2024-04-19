@@ -30,7 +30,7 @@ public class GerenciadorDeUsuarios {
 		// Verificar se o arquivo existe
 		// Verificação sem "!"
 		if (arquivo.exists()) {
-			System.out.println("Banco funcionando!");
+			System.out.println("Banco de Ususarios funcionando!");
 		} else {
 			// tente criar, caso de erro, exibe o erro
 			try {
@@ -79,6 +79,20 @@ public class GerenciadorDeUsuarios {
 		return usuarios;
 	}
 
+	public void listarUsuario() {
+		List<Usuario> usuarios = lerUsuarios();
+
+		if (usuarios.isEmpty()) {
+			System.out.println("Nenhum usuario cadastrado.");
+		} else {
+			System.out.println("Lista de usuarios.");
+			for (Usuario usuario : usuarios) {
+				System.out.println(
+						"ID: " + usuario.getId() + ", Nome: " + usuario.getNome() + ", Senha: " + usuario.getSenha());
+			}
+		}
+	}
+
 	public void reescreverArquivo(List<Usuario> usuarios) {
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(NOME_ARQUIVO))) {
 			for (Usuario usuario : usuarios) {
@@ -110,22 +124,6 @@ public class GerenciadorDeUsuarios {
 			System.out.println("Usuario editado com sucesso.");
 		} else {
 			System.out.println("usuario não encontrado.");
-		}
-
-	}
-
-	public void listarUsuario() {
-		List<Usuario> usuarios = lerUsuarios();
-
-		if (usuarios.isEmpty()) {
-			System.out.println("Nenhum usuario cadastrado.");
-		} else {
-			System.out.println("Lista de usuarios.");
-			for (Usuario usuario : usuarios) {
-				System.out.println(
-						"ID: " + usuario.getId() + ", Nome: " + usuario.getNome() + ", Senha: " + usuario.getSenha());
-			}
-
 		}
 
 	}

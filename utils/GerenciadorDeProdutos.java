@@ -19,7 +19,7 @@ public class GerenciadorDeProdutos {
 		File nomeArquivo = new File(arquivo);
 
 		if (nomeArquivo.exists()) {
-			System.out.println("Bacno de Dados funcionando.");
+			System.out.println("Banco de Produtos funcionando!");
 		} else {
 			try {
 				nomeArquivo.createNewFile();
@@ -41,29 +41,42 @@ public class GerenciadorDeProdutos {
 	}
 
 	public List<Produto> readerProduct() {
-		List<Produto> produto = new ArrayList<Produto>();
+		List<Produto> produtos = new ArrayList<Produto>();
 
 		try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
-			String linha; // linha =>1;nome;senha
+			String linha;
 
-			// percorrer todas as linhas enquanto seja siferente de vazio
 			while ((linha = br.readLine()) != null) {
-				// Split => vai dividir em tres partes, vai cortar o ";".
 				String[] partes = linha.split(";");
-				produto.add(new Produto(Long.parseLong(partes[0]), partes[1], Double.parseDouble(partes[2]),
+				produtos.add(new Produto(Long.parseLong(partes[0]), partes[1], Double.parseDouble(partes[2]),
 						Integer.parseInt(partes[3])));
 			}
-
 		} catch (IOException e) {
 			System.out.println("Ocorreu um erro ao ler arquivo: " + e.getMessage());
 		}
-		return produto;
+		return produtos;
 	}
 
-	public void reescreverArquivo(List<Produto> produto) {
+	public void listarProduto() {
+		List<Produto> produtos = readerProduct();
+
+		if (produtos.isEmpty()) {
+			System.out.println("Nenhum usuario cadastrado.");
+		} else {
+			System.out.println("Lista de usuarios.");
+			for (Produto produto : produtos) {
+				System.out.println("ID: " + produto.getId() + ", Nome: " + produto.getNome() + ", Preço: "
+						+ produto.getPreco() + ", Quantidade: " + produto.getQuantidade());
+			}
+
+		}
+
+	}
+
+	public void reescreverArquivo(List<Produto> produtos) {
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(arquivo))) {
-			for (Produto prod : produto) {
-				bw.write(prod.toString());
+			for (Produto produto : produtos) {
+				bw.write(produto.toString());
 				bw.newLine();
 			}
 		} catch (IOException e) {
@@ -93,6 +106,22 @@ public class GerenciadorDeProdutos {
 			System.out.println("Produto não encontrado.");
 		}
 
+	}
+
+	public void listarEspecifico(int id) {
+
+		List<Produto> produtos = readerProduct();
+
+		for (Produto produto : produtos) {
+
+			if (produto.getId() == id) {
+				System.out.println("ID: " + produto.getId() + ", Nome: " + produto.getNome() + ", Preço: "
+						+ produto.getPreco() + ", Quantidade: " + produto.getQuantidade());
+				break;
+			} else {
+				System.out.println("Usuario não encontrado.");
+			}
+		}
 	}
 
 	public void deletProducts(long id) {
