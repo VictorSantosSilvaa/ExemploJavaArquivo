@@ -47,6 +47,8 @@ public class MenuDeProduto {
 
 		Produto prod = new Produto(id, nome, preco, quantidade);
 		gp.addProduct(prod);
+		System.out.println("Produto cadastrado com sucesso.");
+		System.out.println();
 	}
 
 	public void ler() {
@@ -54,7 +56,7 @@ public class MenuDeProduto {
 	}
 
 	public void atualizar() {
-		System.out.println("Digite o ID do usuario: ");
+		System.out.println("Digite o ID do Produto: ");
 		long id = sc.nextLong();
 		
 		System.out.println("Digite o novo nome: ");
@@ -70,16 +72,21 @@ public class MenuDeProduto {
 	}
 
 	public void deletar() {
-		System.out.println("Digite o ID do usuario a ser deletado: ");
+		System.out.println("Digite o ID do Produto a ser deletado: ");
 		long id = sc.nextLong();
 		gp.deletProducts(id);
 	}
 
 	public void listarEspecifico() {
-		System.out.println("Digite o ID do usuario a ser encontrado: ");
+		System.out.println("Digite o ID do Produto a ser encontrado: ");
 		int id = sc.nextInt();
 		gp.listarEspecifico(id);
 
+	}
+	
+	
+	public void somarTudo() {
+		gp.somarPrecos();
 	}
 	
 	

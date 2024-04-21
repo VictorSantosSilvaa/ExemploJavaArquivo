@@ -1,3 +1,4 @@
+
 package sistema;
 
 import java.util.Scanner;
@@ -18,7 +19,7 @@ public class SistemaDeProduto {
 			System.out.println();
 			System.out.println("Escolha as opções abaixo: ");
 			System.out.println(
-					"1 - Cadastrar \n2 - Ler \n3 - Atualizar \n4 - Deletar \n5 - Especificar produto \n6 - Voltar para o Menu Principal \n9 - Sair do programa. ");
+					"1 - Cadastrar \n2 - Ler \n3 - Atualizar \n4 - Deletar \n5 - Especificar produto \n6 - Somar todos os valores. \n8 - Voltar para o Menu Principal \n9 - Sair do programa. ");
 			System.out.print("Digite um numero: ");
 			opcao = sc.nextInt();
 
@@ -56,6 +57,9 @@ public class SistemaDeProduto {
 				continue;
 			}
 			case 6: {
+				menu.somarTudo();
+			}
+			case 8: {
 				Main.main(args);
 			}
 

@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import models.Produto;
@@ -61,9 +62,9 @@ public class GerenciadorDeProdutos {
 		List<Produto> produtos = readerProduct();
 
 		if (produtos.isEmpty()) {
-			System.out.println("Nenhum usuario cadastrado.");
+			System.out.println("Nenhum produto cadastrado.");
 		} else {
-			System.out.println("Lista de usuarios.");
+			System.out.println("Lista de produtos:");
 			for (Produto produto : produtos) {
 				System.out.println("ID: " + produto.getId() + ", Nome: " + produto.getNome() + ", Preço: "
 						+ produto.getPreco() + ", Quantidade: " + produto.getQuantidade());
@@ -93,7 +94,7 @@ public class GerenciadorDeProdutos {
 			if (prod.getId() == id) {
 				prod.setNome(novoNome);
 				prod.setPreco(novoPreco);
-				prod.setId(novaQuantidade);
+				prod.setQuantidade(novaQuantidade);
 				encontrado = true;
 				break;
 			}
@@ -119,7 +120,7 @@ public class GerenciadorDeProdutos {
 						+ produto.getPreco() + ", Quantidade: " + produto.getQuantidade());
 				break;
 			} else {
-				System.out.println("Usuario não encontrado.");
+				System.out.println("Produto não encontrado.");
 			}
 		}
 	}
@@ -132,10 +133,32 @@ public class GerenciadorDeProdutos {
 		// o usuario ele vai de linha em linha até ser igual ao que o usuario digi
 		if (produtos.removeIf(produto -> produto.getId() == id)) {
 			reescreverArquivo(produtos);
-			System.out.println("Usuario deletado com sucesso.");
+			System.out.println("Produto deletado com sucesso.");
 		} else {
-			System.out.println("Usuario não encontrado.");
+			System.out.println("Produto não encontrado.");
 		}
 	}
 
+	public void somarPrecos() {
+		List<Produto> produtos = readerProduct();
+
+		for (Produto produto : produtos) {
+			double[] soma = { produto.getPreco() };
+			for (int i = 0; i < soma.length; i++) {
+				System.out.println("Somando tudo: " + soma);
+
+			}
+
+		}
+
+	}
+
+	public void contarProdutos() {
+		List<Produto> produtos = readerProduct();
+
+	}
+
+	public void trocarSenha() {
+
+	}
 }

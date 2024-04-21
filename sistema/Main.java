@@ -9,7 +9,7 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		int opcao = 0;
 		do {
-
+			System.out.println();
 			System.out.println("Bem vindo ao sistema. ");
 			System.out.println("Escolha 1 para Sistema de Produto.");
 			System.out.println("Escolha 2 para Sistema de Usuario.");
